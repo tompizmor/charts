@@ -81,6 +81,9 @@ host. To configure Magento to use and external database host:
         Watch the status with: 'kubectl get svc --namespace {{ .Release.Namespace }} -w {{ template "magento.fullname" . }}'
 
   export APP_HOST=$(kubectl get svc --namespace {{ .Release.Namespace }} {{ template "magento.fullname" . }} --template "{{ "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}" }}")
+{{- else -}}
+
+  export APP_HOST=127.0.0.1
 {{- end }}
   export APP_PASSWORD=$(kubectl get secret --namespace {{ .Release.Namespace }} {{ template "magento.fullname" . }} -o jsonpath="{.data.magento-password}" | base64 --decode)
 
