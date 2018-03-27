@@ -45,8 +45,11 @@ The following table lists the configurable parameters of the RabbitMQ chart and 
 
 |          Parameter          |                       Description                       |                         Default                          |
 |-----------------------------|---------------------------------------------------------|----------------------------------------------------------|
-| `image`                     | RabbitMQ image                                          | `bitnami/rabbitmq:{VERSION}`                             |
-| `imagePullPolicy`           | Image pull policy                                       | `Always` if `imageTag` is `latest`, else `IfNotPresent`. |
+| `image.registry`            | RabbitMQ image registry                                 | `docker.io`                                              |
+| `image.repository`          | RabbitMQ image name                                     | `bitnami/rabbitmq`                                       |
+| `image.tag`                 | RabbitMQ image tag                                      | `{VERSION}`                                              |
+| `image.pullPolicy`          | Image pull policy                                       | `Always` if `imageTag` is `latest`, else `IfNotPresent`  |
+| `image.pullSecrets`         | Specify image pull secrets                              | `nil`                                                    |
 | `rabbitmqUsername`          | RabbitMQ application username                           | `user`                                                   |
 | `rabbitmqPassword`          | RabbitMQ application password                           | _random 10 character long alphanumeric string_           |
 | `rabbitmqErlangCookie`      | Erlang cookie                                           | _random 32 character long alphanumeric string_           |
